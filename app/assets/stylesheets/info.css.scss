@@ -1,0 +1,130 @@
+// Place all the styles related to the info controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$color-blue-light: #b1cde3;
+$color-blue-secondary: #6da5c9;
+$color-blue: #287aae;
+
+@mixin placeholder-styles {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+@mixin box-shadow ($horiz-offset, $vert-offset, $spread, $color, $opacity: 0.3, $add-fallback: true, $inset: false) {
+  @if $add-fallback {
+    box-shadow: $horiz-offset $vert-offset $spread $color;
+  }
+  @if $inset {
+    box-shadow: inset $horiz-offset $vert-offset $spread rgba($color, $opacity);
+  } @else {
+    box-shadow: $horiz-offset $vert-offset $spread rgba($color, $opacity);
+  }
+}
+
+#nav {
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  background: #eef4f7;
+  font: {
+    family: 'courier-std', sans-serif;
+    size: .9em;
+  }
+  z-index: 999;
+  display: none;
+//  @include box-shadow($horiz-offset: 0, $vert-offset: 1px, $spread: 4px, $color: #000, $opacity: 0.2, $add-fallback: true, $inset: false);
+  .nav-inner {
+    width: 450px;
+    margin: 0 auto;
+    .terminal {
+      background: transparent image-url('term_prefix.png') left center no-repeat;
+      line-height: 20px;
+      width: 100%;
+      input {
+        padding: 0 0 0 17px;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: $color-blue;
+        font-size: 130%;
+        width: 100%;
+        @include placeholder-styles {
+          color: $color-blue-light;
+        }
+        &:focus {
+          @include placeholder-styles {
+            color: $color-blue-secondary;
+            content: "test";
+          }
+        }
+      }
+    }
+  }
+  .guide {
+    margin: 0px 0 0 17px;
+    font-size: 100%;
+    display: none;
+    .left {
+      float: left;
+      width: 100px;
+    }
+    .right {
+      float: left;
+      width: 330px;
+    }
+    .header {
+      color: #ff6f21;
+      margin: 5px 0 0 0;
+    }
+    .content-row {
+      color: $color-blue-secondary;
+      margin: 5px 0 0 0;
+      clear: both;
+      .left {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+#banner {
+  margin: 0 0 0 0;
+  background: #eef4f7;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 200px 0;
+  .banner-inner {
+    width: 600px;
+    height: 110px;
+    margin: 0 auto;
+    display: block;
+    .banner-logo {
+      float: left;
+      margin: 0 20px 0 0;
+      background: transparent image-url('logo_big.png') left 30px no-repeat;
+      width: 188px; height: 110px;
+      display: block;
+      text-indent: -9999px;
+      overflow: hidden;
+    }
+    .banner-dev-des {
+      float: left;
+      background: transparent image-url('dev_des.png') no-repeat;
+      width: 372px; height: 110px;
+      display: block;
+      text-indent: -9999px;
+      overflow: hidden;
+    }
+  }
+}
