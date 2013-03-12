@@ -1,5 +1,8 @@
+Placeholders.init({'live': true, 'hideOnFocus': false})
+
 $(document).keypress (e) ->
-  $('#nav').find('.terminal').find('input').focus()
+  if terminal_focused == false
+    $('#nav').find('.terminal').find('input').focus()
 
 $('#nav').find('.terminal').submit () ->
   return false
@@ -11,11 +14,13 @@ showText = (target, message, index, interval) ->
       showText(target, message, index, interval - 5)
     , interval
 terminal_flag = false
+terminal_focused = false
 nav_guide_height = $('#nav').find('.guide').outerHeight()
 $('#nav').find('.terminal').find('input').focusin( () ->
+  terminal_focused = true
+  $(this).attr('placeholder', 'enter a page to display')
   if $(this).val() == 'work'
     $('#nav').find('.guide').hide()
-  $(this).attr('placeholder', 'enter a page to display')
   $('#nav').find('.guide').animate({opacity: 1}).show()
   if terminal_flag == false
     terminal_flag = true
@@ -25,8 +30,9 @@ $('#nav').find('.terminal').find('input').focusin( () ->
         showText($(this), curr_text, 0, 75)
 )
 $('#nav').find('.terminal').find('input').focusout( () ->
+  terminal_focused = false
   $(this).attr('placeholder', 'start typing or click here to navigate')
-  $('#nav').find('.guide').css({opacity: 0.5})
+  $('#nav').find('.guide').animate({opacity: 0.5})
 )
 
 arr = []
