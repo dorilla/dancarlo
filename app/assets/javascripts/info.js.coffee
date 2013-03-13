@@ -54,15 +54,24 @@ $('#banner').find('.banner-dev-des').animate(
   {right: banner_dev_des_pos}, 1500, () -> 
     $(this).css({position: 'relative', right: 0})
     $('#nav').fadeIn('slow')
+    $('#banner').find('.down-arrow').fadeIn('slow')
 )
 
 $(window).scroll () ->
   global_pos = $(this).scrollTop()
-  $('#banner').css({opacity: 1-global_pos/300})
-  $('#banner').find('.banner-logo').css({marginTop: -(global_pos/2), opacity: 1-global_pos/100})
-  $('#banner').find('.banner-dev-des').css({marginTop: -(global_pos/2), opacity: 1-global_pos/100})
+  $('#banner').css({opacity: 1-global_pos/250})
+  $('#banner').find('.down-arrow').css({opacity: 1-global_pos/400})
+  $('#banner').find('.banner-logo').add('.banner-dev-des').css({marginTop: -(global_pos/2.5), opacity: 1-global_pos/100})
   if $('#nav').find('.terminal').find('input').val().length == 0
     $('#nav').find('.guide').slideUp()
+  work_wrap = $('#work').add('#betterific')
+  work_wrap_bottom = $('#work').add('#betterific').offset().top + $('#work').add('#betterific').outerHeight() + 100
+  if global_pos > 201 && global_pos < work_wrap_bottom 
+    work_wrap.show().css({opacity: (global_pos-201)/200})
+  else if global_pos >= work_wrap_bottom 
+    work_wrap.show().css({opacity: 1-(global_pos-work_wrap_bottom)/200})
+  else
+    work_wrap.hide()
   
   
   
