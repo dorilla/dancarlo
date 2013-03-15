@@ -151,8 +151,22 @@ $color-blue: #287aae;
   }
 }
 
+#works {
+  display: none;
+}
+
+#work {
+  &.content {
+    padding: 100px 0 50px;
+    min-height: auto;
+    max-height: auto;
+  }
+}
 .content {
   padding: 100px 0 0px;
+  min-height: 550px;
+  max-height: 550px;
+  position: relative;
   .content-inner {
     width: 800px;
     margin: 0 auto;
@@ -181,9 +195,100 @@ $color-blue: #287aae;
   }
   &.mba {
     background: white image-url('mba.gif') center center no-repeat;
-    width: 100%; min-height: 520px;
+    width: 100%; min-height: 650px;
+  }
+}
+.arrow {
+  width: 70px; height: 100px;
+  background: transparent no-repeat;
+  &.horiz {
+    &.white {
+      &.right {
+        background: {
+          image: image-url('arrow_horiz_white_right.png');
+          position: 0 0;
+        }
+      }
+      &.left {
+        background: {
+          image: image-url('arrow_horiz_white_left.png');
+          position: 0 0;
+        }
+      }
+      &:hover {
+        background-position: 0 -100px;
+      }
+      &:active {
+        background-position: 0 -200px;
+      }
+    }
+    &.oj {
+      &.right {
+        background: {
+          image: image-url('arrow_horiz_oj_right.png');
+          position: 0 0;
+        }
+      }
+      &.left {
+        background: {
+          image: image-url('arrow_horiz_oj_left.png');
+          position: 0 0;
+        }
+      }
+      &:hover {
+        background-position: 0 -100px;
+      }
+      &:active {
+        background-position: 0 -200px;
+      }
+    }
+  }
+}
+.single-work {
+  position: relative;
+  overflow: hidden;
+  .content-wrap {
+    width: auto;
+    .content {
+      float: left;
+      width: auto;
+      margin: 0; padding: 0;
+      &.active {
+        display: block;
+      }
+      &.normal {
+        padding: 100px 0 0;
+        background: #2c86c0;
+      }
+    }
   }
   &#betterific {
-    
+    .content-inner {
+      &.betterific-info {
+        background: transparent image-url('betterific_info.png') no-repeat;
+        width: 365px; height: 125px;
+        margin: 75px auto 0;
+        display: block;
+        text-indent: -9999px;
+        overflow: hidden;
+      }
+    }
+  }
+  .nav {
+    .arrow {
+      position: absolute;
+      top: 50%;
+      margin: -50px 0 0 0;
+      display: none;
+      &.active {
+        display: block;
+      }
+      &.right {
+        right: 50px;
+      }
+      &.left {
+        left: 50px;
+      }
+    }
   }
 }
