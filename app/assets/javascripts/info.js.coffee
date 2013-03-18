@@ -1,8 +1,14 @@
 # Placholders plugin setup
 Placeholders.init({'live': true, 'hideOnFocus': false})
 
+# function to scroll to a div
+scrollTo = (elem) ->
+  worksTop = $(elem).offset().top
+  $('html, body').animate({scrollTop: worksTop}, 500)
+
 # press any key anywhere forces focus on terminal
 $(document).keypress (e) ->
+  $('#nav').find('.guide').slideDown()
   if terminal_focused == false
     $('#nav').find('.terminal').find('input').focus()
 # clicking into the entire top "bar" forces focus on terminal
@@ -12,6 +18,17 @@ $('#nav').click () ->
 
 # TODO nav submit action
 $('#nav').find('.terminal').submit () ->
+  val = $(this).find('input').val()
+  switch val.toLowerCase()
+    when 'work', 'works'
+      $('#nav').find('.guide').slideUp()
+      $(this).find('input').val('')
+      scrollTo('#works')
+    when 'betterific'
+      $('#nav').find('.guide').slideUp()
+      $(this).find('input').val('')
+      scrollTo('#betterific')
+    else alert('not a valid command')
   return false
 
 # function to show text on a letter-by-letter bases
@@ -31,7 +48,7 @@ nav_guide_height = $('#nav').find('.guide').outerHeight() # height of nav bar
 # event: terminal focus
 $('#nav').find('.terminal').find('input').focusin( () ->
   terminal_focused = true
-  $(this).attr('placeholder', 'enter a page to display')
+  $(this).attr('placeholder', 'enter a section to display')
   if $(this).val() == 'work'
     $('#nav').find('.guide').hide()
   $('#nav').find('.guide').animate({opacity: 1}).show()
@@ -86,7 +103,7 @@ $(window).scroll () ->
   else if global_pos >= works_wrap_bottom
     works_wrap.show().css({opacity: 1-(global_pos-works_wrap_bottom)/200})
   else
-    works_wrap.hide()
+    works_wrap.show().css({opacity: 0})
 
 # single work nav actions
 works_actions = (absolute_width) ->

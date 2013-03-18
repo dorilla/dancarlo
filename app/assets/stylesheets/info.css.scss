@@ -152,7 +152,7 @@ $color-blue: #287aae;
 }
 
 #works {
-  display: none;
+  opacity: 0;
 }
 
 #work {
@@ -200,46 +200,54 @@ $color-blue: #287aae;
 }
 .arrow {
   width: 70px; height: 100px;
-  background: transparent no-repeat;
+  background: transparent image-url('arrows_big.png') no-repeat;
   &.horiz {
-    &.white {
-      &.right {
-        background: {
-          image: image-url('arrow_horiz_white_right.png');
-          position: 0 0;
-        }
-      }
-      &.left {
-        background: {
-          image: image-url('arrow_horiz_white_left.png');
-          position: 0 0;
-        }
-      }
-      &:hover {
-        background-position: 0 -100px;
-      }
-      &:active {
-        background-position: 0 -200px;
-      }
-    }
     &.oj {
       &.right {
         background: {
-          image: image-url('arrow_horiz_oj_right.png');
           position: 0 0;
+        }
+        &:hover {
+          background-position: 0 -100px;
+        }
+        &:active {
+          background-position: 0 -200px;
         }
       }
       &.left {
         background: {
-          image: image-url('arrow_horiz_oj_left.png');
-          position: 0 0;
+          position: 0 -300px;
+        }
+        &:hover {
+          background-position: 0 -400px;
+        }
+        &:active {
+          background-position: 0 -500px;
         }
       }
-      &:hover {
-        background-position: 0 -100px;
+    }
+    &.white {
+      &.right {
+        background: {
+          position: 0 -600px;
+        }
+        &:hover {
+          background-position: 0 -700px;
+        }
+        &:active {
+          background-position: 0 -800px;
+        }
       }
-      &:active {
-        background-position: 0 -200px;
+      &.left {
+        background: {
+          position: 0 -900px;
+        }
+        &:hover {
+          background-position: 0 -1000px;
+        }
+        &:active {
+          background-position: 0 -1100px;
+        }
       }
     }
   }
@@ -267,7 +275,7 @@ $color-blue: #287aae;
       &.betterific-info {
         background: transparent image-url('betterific_info.png') no-repeat;
         width: 365px; height: 125px;
-        margin: 75px auto 0;
+        margin: 150px auto 0;
         display: block;
         text-indent: -9999px;
         overflow: hidden;
