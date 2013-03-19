@@ -23,4 +23,55 @@ body {
   visibility: hidden;
 }
 
+#superdan {
+  width: 100%; height: 100%;
+  position: fixed;
+  .anim {
+    background: white image-url('superdan.gif') 0 0 no-repeat;
+    position: absolute;
+    top: 50%; margin-top: -175px;
+    left: 50%; margin-left: -318px;
+    width: 636px; height: 350px;
+    z-index: -1;
+    &.superdan-0 {
+      background-position: 0 0;
+    }
+    &.superdan-1 {
+      background-position: 0 -350px;
+    }
+    &.superdan-2 {
+      background-position: 0 -700px;
+    }
+    &.superdan-3 {
+      background-position: 0 -1050px;
+    }
+    &.superdan-4 {
+      background-position: 0 -1400px;
+    }
+    &.small {
+      background: white image-url('superdan_small.gif') 0 0 no-repeat;
+      position: absolute;
+      top: 50%; margin-top: -110px;
+      left: 50%; margin-left: -200px;
+      width: 400px; height: 220px;
+      z-index: -1;
+      &.superdan-0 {
+        background-position: 0 0;
+      }
+      &.superdan-1 {
+        background-position: 0 -220px;
+      }
+      &.superdan-2 {
+        background-position: 0 -440px;
+      }
+      &.superdan-3 {
+        background-position: 0 -660px;
+      }
+      &.superdan-4 {
+        background-position: 0 -880px;
+      }
+    }
+  }
+}
+
 @import 'info';

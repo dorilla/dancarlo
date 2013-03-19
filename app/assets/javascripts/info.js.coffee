@@ -4,7 +4,7 @@ Placeholders.init({'live': true, 'hideOnFocus': false})
 # function to scroll to a div
 scrollTo = (elem) ->
   worksTop = $(elem).offset().top
-  $('html, body').animate({scrollTop: worksTop}, 500)
+  $('html, body').animate({scrollTop: worksTop}, 1500)
 
 # press any key anywhere forces focus on terminal
 $(document).keypress (e) ->
@@ -88,22 +88,42 @@ $('#banner').find('.banner-dev-des').animate(
     $('#banner').find('.down-arrow').fadeIn('slow')
 )
 
+superdan_dir = 0
+superdan_prev = 1
+superdan_cnt = 0
+do_anim = 1
 # on scroll animations
 $(window).scroll () ->
   global_pos = $(this).scrollTop()
-  $('#banner').css({opacity: 1-global_pos/250})
-  $('#banner').find('.down-arrow').css({opacity: 1-global_pos/400})
-  $('#banner').find('.banner-logo').add('.banner-dev-des').css({marginTop: -(global_pos/2.5), opacity: 1-global_pos/100})
+  $('#banner').css({opacity: 1-global_pos / 250})
+  $('#banner').find('.down-arrow').css({opacity: 1-global_pos / 400})
+  $('#banner').find('.banner-logo').add('.banner-dev-des').css({marginTop: -(global_pos/2.5), opacity: 1-global_pos / 100})
   if $('#nav').find('.terminal').find('input').val().length == 0
     $('#nav').find('.guide').slideUp()
   works_wrap = $('#works')
   works_wrap_bottom = works_wrap.offset().top + works_wrap.outerHeight()
   if global_pos > 300 && global_pos < works_wrap_bottom
-    works_wrap.show().css({opacity: (global_pos-300)/200})
+    works_wrap.show().css({opacity: (global_pos-300) / 200})
   else if global_pos >= works_wrap_bottom
-    works_wrap.show().css({opacity: 1-(global_pos-works_wrap_bottom)/200})
+    works_wrap.show().css({opacity: 1-(global_pos-works_wrap_bottom) / 200})
   else
     works_wrap.show().css({opacity: 0})
+  # sequential superdan
+  # if superdan_dir == 0
+  #   superdan_prev = superdan_cnt++
+  #   if superdan_cnt == 4 then superdan_dir = 1
+  #   $('#superdan').find('.anim').removeClass('superdan-' + superdan_prev).addClass('superdan-' + superdan_cnt)
+  # else if superdan_dir == 1
+  #   superdan_prev = superdan_cnt--
+  #   if superdan_cnt == 0 then superdan_dir = 0
+  #   $('#superdan').find('.anim').removeClass('superdan-' + superdan_prev).addClass('superdan-' + superdan_cnt)
+  # random superdan
+  superdan_prev = superdan_cnt
+  superdan_cnt = Math.floor(Math.random()*4)
+  superdan_variable_height = Math.floor(Math.random()*75)
+  superdan_variable_width = Math.floor(Math.random()*50)
+  $('#superdan').find('.anim').stop()
+  $('#superdan').find('.anim').removeClass('superdan-' + superdan_prev).addClass('superdan-' + superdan_cnt).animate({marginTop: -110 + superdan_variable_height}, 250)
 
 # single work nav actions
 works_actions = (absolute_width) ->
