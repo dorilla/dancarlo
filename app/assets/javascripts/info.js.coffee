@@ -124,8 +124,8 @@ $(window).scroll () ->
   superdan_variable_width = Math.floor(Math.random()*50)
   $('#superdan').find('.anim').stop()
   $('#superdan').find('.anim').removeClass('superdan-' + superdan_prev).addClass('superdan-' + superdan_cnt).animate({marginTop: -110 + superdan_variable_height}, 250)
-  $('#superdan').find('.horizon').css({backgroundPosition: -(global_pos / 10) + 'px bottom'})
-  $('#superdan').find('.cloud').css({backgroundPosition: -(global_pos * 2) + 'px center'})
+  $('#superdan').find('.horizon').css({backgroundPosition: -(global_pos / 5) + 'px bottom'})
+  $('#superdan').find('.cloud').css({backgroundPosition: -(global_pos * 2) + 'px 80%'})
 
 # single work nav actions
 works_actions = (absolute_width) ->

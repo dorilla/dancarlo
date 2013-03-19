@@ -37,7 +37,7 @@ body {
     width: 100%; height: 100%;
     position: absolute;
     top: 0; left: 0;
-    background: transparent image-url('cloud.png') center center repeat-x;
+    background: transparent image-url('cloud.png') 0 80% repeat-x;
     z-index: -1;
   }
   .anim {
