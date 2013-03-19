@@ -97,7 +97,7 @@ $(window).scroll () ->
   global_pos = $(this).scrollTop()
   $('#banner').css({opacity: 1-global_pos / 250})
   $('#banner').find('.down-arrow').css({opacity: 1-global_pos / 400})
-  $('#banner').find('.banner-logo').add('.banner-dev-des').css({marginTop: -(global_pos/2.5), opacity: 1-global_pos / 100})
+  $('#banner').find('.banner-logo').add('.banner-dev-des').css({marginTop: -(global_pos / 2.5), opacity: 1-global_pos / 100})
   if $('#nav').find('.terminal').find('input').val().length == 0
     $('#nav').find('.guide').slideUp()
   works_wrap = $('#works')
@@ -124,6 +124,8 @@ $(window).scroll () ->
   superdan_variable_width = Math.floor(Math.random()*50)
   $('#superdan').find('.anim').stop()
   $('#superdan').find('.anim').removeClass('superdan-' + superdan_prev).addClass('superdan-' + superdan_cnt).animate({marginTop: -110 + superdan_variable_height}, 250)
+  $('#superdan').find('.horizon').css({backgroundPosition: -(global_pos / 10) + 'px bottom'})
+  $('#superdan').find('.cloud').css({backgroundPosition: -(global_pos * 2) + 'px center'})
 
 # single work nav actions
 works_actions = (absolute_width) ->
